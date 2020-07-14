@@ -5,9 +5,11 @@
         <span class="h3">HOME PAGE</span>
       </div>
     </div>
-    <div class="row my-3">
-      <div class="col">
-        <button class="btn btn-sm btn-primary" @click="init" >GET</button>
+    <div v-for="(coin, index) in coins" :key="index" class="card text-white bg-info m-3 w-25">
+      <div class="card-header"> {{ coin.name }} </div>
+      <div class="card-body">
+        <h5 class="card-title"> {{ coin.symbol }} </h5>
+        <p class="card-text"> {{ coin.first_historical_data }} </p>
       </div>
     </div>
   </section>
@@ -17,16 +19,18 @@
 export default {
   name: 'Home',
   data () {
-    return {}
+    return {
+      coins: [{ name: 'coin', symbol: 'C$', first_historical_data: '' }]
+    }
   },
   mounted () {
-    // this.init()
+    this.init()
   },
   methods: {
     init () {
-      this.$http.get('/v1/cryptocurrency/map', { params: { CMC_PRO_API_KEY: '33b14ab7-d5c7-46b6-9ee4-49bb9222abe3' } }).then(
+      this.$http.get('/v1/cryptocurrency/map').then(
         res => {
-          console.log(res)
+          this.coins = res.data
         }
       )
     }

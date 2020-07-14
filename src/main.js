@@ -13,14 +13,14 @@ Vue.use(BootstrapVueIcons)
 
 Vue.use(Vuelidate)
 
-// const apikey = '33b14ab7-d5c7-46b6-9ee4-49bb9222abe3'
+const CMC_PRO_API_KEY = localStorage.getItem('X-CMC_PRO_API_KEY')
 Vue.prototype.$http = axios.create({
   baseURL: 'https://pro-api.coinmarketcap.com/',
   headers: {
     accept: 'application/json',
     'Content-Type': 'application/json',
     'Accept-Encoding': 'deflate, gzip',
-    'X-CMC_PRO_API_KEY': '33b14ab7-d5c7-46b6-9ee4-49bb9222abe3',
+    'X-CMC_PRO_API_KEY': CMC_PRO_API_KEY,
     'Allow-Origin': '*'
   }
 })
