@@ -55,6 +55,10 @@ export default {
         overflow-y: scroll;
         background-color: whitesmoke;
 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
         > .footer {
           width: 100%;
           padding: 0.25rem 1rem;
